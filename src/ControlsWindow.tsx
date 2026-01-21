@@ -19,7 +19,7 @@ const ControlsWindow = ({
         />
         <input
           type='text'
-          placeholder='Поиск по модели или артикулу...'
+          placeholder='Поиск по модели...'
           className='w-full rounded-xl border-none bg-white px-10 py-3 shadow-sm ring-1 ring-slate-200 focus:ring-2 focus:ring-blue-500 outline-none'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -43,9 +43,21 @@ const ControlsWindow = ({
             id: "",
             Brand: "",
             Model: "",
-            Engine: "",
-            PartName: "",
-            Articul: "",
+            StartDateCar: "",
+            EndDateCar: "",
+            EngineCapacity: "",
+            EngineArticle: "",
+            Detail: "",
+            PartName_ASAKASHI: "",
+            PartName_YUMIKO: "",
+            PartName_SCT: "",
+            PartName_OLIMP: "",
+            PartName_JAPANPARTS: "",
+            PartName_MANN: "",
+            PartName_KNECHT: "",
+            PartName_MASUMA: "",
+            PartName_BOSCH: "",
+            PartName_OTHERS: "",
           });
           setIsModalOpen(true);
         }}

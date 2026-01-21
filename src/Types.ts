@@ -2,19 +2,11 @@ export interface Part {
   id: string;
   Brand: string;
   Model: string;
-  Engine: string;
-  PartName: string;
-  Articul: string;
-}
-
-export interface Part2 {
-  id: string;
-  Brand: string;
-  Model: string;
   StartDateCar: string;
   EndDateCar: string;
   EngineCapacity: string;
   EngineArticle: string;
+  Detail: string;
   PartName_ASAKASHI: string;
   PartName_YUMIKO: string;
   PartName_SCT: string;
@@ -24,7 +16,7 @@ export interface Part2 {
   PartName_KNECHT: string;
   PartName_MASUMA: string;
   PartName_BOSCH: string;
-  ParNamme_OTHERS: string;
+  PartName_OTHERS: string;
 }
 
 export interface ModalType {

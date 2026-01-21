@@ -5,6 +5,7 @@ import TableWindow from "./TableWindow";
 import ControlsWindow from "./ControlsWindow";
 import Navigation from "./Navigation";
 import { handleOpenFile, saveToFile } from "./fileSystemAPI";
+import DetailModal from "./DetailModal";
 
 declare global {
   interface Window {
@@ -20,12 +21,12 @@ const App: React.FC = () => {
   const [fileHandle, setFileHandle] = useState<FileSystemFileHandle | null>(
     null,
   );
-
-  // Состояние модалки
+  const [selectedPartForView, setSelectedPartForView] = useState<Part | null>(
+    null,
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPart, setCurrentPart] = useState<Part | null>(null);
 
-  // CRUD Операции
   const handleSavePart = (e: React.FormEvent) => {
     e.preventDefault();
     if (currentPart?.id) {
@@ -48,7 +49,7 @@ const App: React.FC = () => {
     return parts.filter(
       (p) =>
         (p.Model?.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
-          p.Articul?.toString()
+          p.Detail?.toString()
             .toLowerCase()
             .includes(searchTerm.toLowerCase())) &&
         (selectedBrand === "" || p.Brand === selectedBrand),
@@ -87,8 +88,14 @@ const App: React.FC = () => {
           setCurrentPart={setCurrentPart}
           setIsModalOpen={setIsModalOpen}
           deletePart={deletePart}
+          onRowClick={(part: Part) => setSelectedPartForView(part)}
         />
       </main>
+
+      <DetailModal
+        part={selectedPartForView}
+        onClose={() => setSelectedPartForView(null)}
+      />
 
       {isModalOpen && (
         <ModalWindow
