@@ -78,7 +78,7 @@ const handleOpenFile = async ({
       workbook.Sheets[workbook.SheetNames[0]],
     ) as Part[];
 
-    const dataWithIds = data.map((item, idx) => ({
+    const dataWithIds = data.map((item) => ({
       ...item,
       id: item.id || crypto.randomUUID(),
     }));

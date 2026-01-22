@@ -1,4 +1,4 @@
-import { Car, Edit2, Trash2 } from "lucide-react";
+import { Edit2, Trash2 } from "lucide-react";
 import type { Part } from "./Types";
 import { SiBmw } from "react-icons/si";
 

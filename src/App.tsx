@@ -15,7 +15,7 @@ declare global {
 
 const App: React.FC = () => {
   const [parts, setParts] = useState<Part[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("");
   const [fileHandle, setFileHandle] = useState<FileSystemFileHandle | null>(
