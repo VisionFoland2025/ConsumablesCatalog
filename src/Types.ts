@@ -5,6 +5,7 @@ export interface Part {
   StartDateCar: string;
   EndDateCar: string;
   EngineCapacity: string;
+  EnginneType: string;
   EngineArticle: string;
   Detail: string;
   PartName_ASAKASHI: string;

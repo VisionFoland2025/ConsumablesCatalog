@@ -82,7 +82,8 @@ const ModalWindow = ({
               }
             />
           </div>
-          <div className='grid grid-cols-2 gap-4'>
+
+          <div className='grid grid-cols-3 gap-4'>
             <input
               required
               placeholder='Объем двигателя'
@@ -92,6 +93,18 @@ const ModalWindow = ({
                 setCurrentPart({
                   ...currentPart!,
                   EngineCapacity: e.target.value.toUpperCase(),
+                })
+              }
+            />
+            <input
+              required
+              placeholder='Тип топлива'
+              className='w-full p-3 rounded-xl border bg-slate-50 focus:ring-2 focus:ring-blue-500 outline-none transition'
+              value={currentPart?.EnginneType}
+              onChange={(e) =>
+                setCurrentPart({
+                  ...currentPart!,
+                  EnginneType: e.target.value.toUpperCase(),
                 })
               }
             />

@@ -51,7 +51,8 @@ const TableWindow = ({
               <td className='px-6 py-4'>
                 <div className='font-bold text-slate-900'>{part.Brand}</div>
                 <div className='text-sm text-slate-700'>
-                  {part.Model} • {part.EngineCapacity}
+                  {part.Model} • {part.EngineCapacity} • {part.EnginneType} •{" "}
+                  {part.EngineArticle}
                 </div>
                 <div className='text-sm text-slate-500'>
                   {part.StartDateCar} - {part.EndDateCar}
