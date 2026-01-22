@@ -46,6 +46,7 @@ const ControlsWindow = ({
             StartDateCar: "",
             EndDateCar: "",
             EngineCapacity: "",
+            EnginneType: "",
             EngineArticle: "",
             Detail: "",
             PartName_ASAKASHI: "",
