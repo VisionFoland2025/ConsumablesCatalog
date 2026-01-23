@@ -41,8 +41,9 @@ const App: React.FC = () => {
   };
 
   const deletePart = (id: string) => {
-    if (confirm("Удалить запчасть?"))
+    if (confirm("Удалить запчасть?")) {
       setParts(parts.filter((p) => p.id !== id));
+    }
   };
 
   const filteredParts = useMemo(() => {
@@ -71,25 +72,29 @@ const App: React.FC = () => {
         fileHandle={fileHandle}
       />
 
-      <main className='mx-auto max-w-7xl p-6'>
-        <ControlsWindow
-          brands={brands}
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          selectedBrand={selectedBrand}
-          setSelectedBrand={setSelectedBrand}
-          setCurrentPart={setCurrentPart}
-          setIsModalOpen={setIsModalOpen}
-        />
+      <main className='mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-6 lg:py-8 transition-all duration-300'>
+        <section className='mb-6'>
+          <ControlsWindow
+            brands={brands}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            selectedBrand={selectedBrand}
+            setSelectedBrand={setSelectedBrand}
+            setCurrentPart={setCurrentPart}
+            setIsModalOpen={setIsModalOpen}
+          />
+        </section>
 
-        <TableWindow
-          parts={parts}
-          filteredParts={filteredParts}
-          setCurrentPart={setCurrentPart}
-          setIsModalOpen={setIsModalOpen}
-          deletePart={deletePart}
-          onRowClick={(part: Part) => setSelectedPartForView(part)}
-        />
+        <section className='mt-4 sm:mt-6 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden'>
+          <TableWindow
+            parts={parts}
+            filteredParts={filteredParts}
+            setCurrentPart={setCurrentPart}
+            setIsModalOpen={setIsModalOpen}
+            deletePart={deletePart}
+            onRowClick={(part: Part) => setSelectedPartForView(part)}
+          />
+        </section>
       </main>
 
       <DetailModal
@@ -105,6 +110,8 @@ const App: React.FC = () => {
           handleSavePart={handleSavePart}
         />
       )}
+
+      <div className='h-10 sm:hidden' />
     </div>
   );
 };
