@@ -1,7 +1,34 @@
 import * as XLSX from "xlsx";
-import type { HandleOpenFileType, SaveToFileType } from "./Types";
+import type { HandleOpenFileType, Part, SaveToFileType } from "./Types";
+
+export const verifyPermission = async (
+  fileHandle: FileSystemFileHandle,
+  readWrite: boolean,
+): Promise<boolean> => {
+  const options: FileSystemHandlePermissionDescriptor = {
+    mode: readWrite ? "readwrite" : "read",
+  };
+
+  if ((await fileHandle.queryPermission(options)) === "granted") {
+    return true;
+  }
+
+  if ((await fileHandle.requestPermission(options)) === "granted") {
+    return true;
+  }
+
+  return false;
+};
+
 const saveToFile = async ({ fileHandle, parts }: SaveToFileType) => {
   if (!fileHandle) return alert("Сначала откройте файл!");
+
+  const hasWritePermission = await verifyPermission(fileHandle, true);
+  if (!hasWritePermission) {
+    alert("Нет разрешения на запись в файл. Пожалуйста, подтвердите доступ.");
+    return;
+  }
+
   try {
     const worksheet = XLSX.utils.json_to_sheet(parts);
     const workbook = XLSX.utils.book_new();
@@ -12,8 +39,15 @@ const saveToFile = async ({ fileHandle, parts }: SaveToFileType) => {
     await writable.write(buffer);
     await writable.close();
     alert("Файл успешно перезаписан!");
-  } catch (err) {
-    alert("Ошибка сохранения. Закройте файл в Excel, если он открыт.");
+  } catch (err: any) {
+    console.error("Ошибка при записи файла:", err);
+    if (err.name === "NotAllowedError") {
+      alert("Доступ был запрещен во время записи.");
+    } else {
+      alert(
+        "Ошибка сохранения. Закройте файл в Excel, если он открыт, и попробуйте снова.",
+      );
+    }
   }
 };
 
@@ -42,9 +76,9 @@ const handleOpenFile = async ({
     const workbook = XLSX.read(buffer);
     const data = XLSX.utils.sheet_to_json(
       workbook.Sheets[workbook.SheetNames[0]],
-    ) as any[];
+    ) as Part[];
 
-    const dataWithIds = data.map((item, idx) => ({
+    const dataWithIds = data.map((item) => ({
       ...item,
       id: item.id || crypto.randomUUID(),
     }));
