@@ -12,9 +12,7 @@ const DetailModal = ({ part, onClose }: DetailModalProps) => {
 
   return (
     <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-2 sm:p-4'>
-      {/* Добавили max-h-[95vh] и flex flex-col, чтобы шапка и футер были на месте, а центр крутился */}
       <div className='bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[95vh] flex flex-col overflow-hidden'>
-        {/* Шапка (фиксированная) */}
         <div className='flex justify-between items-center px-4 py-3 sm:px-6 sm:py-4 border-b border-slate-100 bg-slate-50 flex-shrink-0'>
           <div className='flex items-center gap-3'>
             <div className='p-2 bg-blue-600 rounded-lg text-white'>
@@ -31,11 +29,8 @@ const DetailModal = ({ part, onClose }: DetailModalProps) => {
             <X size={20} className='text-slate-500' />
           </button>
         </div>
-
-        {/* Тело модалки (прокручиваемое) */}
         <div className='p-4 sm:p-6 overflow-y-auto custom-scrollbar'>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-            {/* Секция Автомобиль */}
             <div className='space-y-4'>
               <h3 className='flex items-center gap-2 font-semibold text-slate-900 border-b pb-2'>
                 <Settings size={18} className='text-blue-500' /> Автомобиль
@@ -71,8 +66,6 @@ const DetailModal = ({ part, onClose }: DetailModalProps) => {
                 </p>
               </div>
             </div>
-
-            {/* Секция Аналоги */}
             <div className='space-y-4'>
               <h3 className='flex items-center gap-2 font-semibold text-slate-900 border-b pb-2'>
                 <Hash size={18} className='text-blue-500' /> Аналоги / Коды
@@ -106,8 +99,6 @@ const DetailModal = ({ part, onClose }: DetailModalProps) => {
             </div>
           </div>
         </div>
-
-        {/* Футер (фиксированный) */}
         <div className='px-6 py-4 bg-slate-50 border-t border-slate-100 flex justify-end flex-shrink-0'>
           <button
             onClick={onClose}
