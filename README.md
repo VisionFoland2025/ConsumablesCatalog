@@ -1,4 +1,4 @@
-# React + TypeScript + Vite
+# ConsumablesCatalog
 
 ![99px_ru_wallpaper_372059_chernij_avtomobil_bmw_s_jarkosinimi_svetodiodnimi_farami_stoit](https://github.com/user-attachments/assets/e37203aa-bcca-4c98-9bf1-637761d3cf06)
 
